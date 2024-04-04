@@ -8,7 +8,8 @@ from sklearn.impute import SimpleImputer
 def parser(s):
     return datetime.strptime(s, '%Y-%m-%d %H:%M:%S')
 
-df = pd.read_csv('df_vector_weather_one_hr.csv', parse_dates=[0], index_col=0, squeeze=True, date_parser=parser)
+df = pd.read_csv('df_vector_weather_one_hr.csv', parse_dates=[0], index_col=0, date_parser=parser)
+df.squeeze("columns")
 
 df['rain_1h'].replace([np.nan], value = [0], inplace = True)
 df['rain_3h'].replace([np.nan], value = [0], inplace = True)
